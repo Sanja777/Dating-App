@@ -10,6 +10,7 @@ namespace API.Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
+                    //test
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(type: "STRING", nullable: false)
