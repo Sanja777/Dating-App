@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+//using API.Services;
 
 namespace API
 {
@@ -28,6 +29,8 @@ namespace API
       
         public void ConfigureServices(IServiceCollection services)
         {
+            //IServiceCollection serviceCollection = services.AddScoped<TokenService, TokenService>();
+            
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
