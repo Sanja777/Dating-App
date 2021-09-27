@@ -6291,19 +6291,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\sanjj\\DatingApp\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj",
+      "projectPath": "C:\\Users\\sanjj\\DatingApp\\API\\API.csproj",
       "packagesPath": "C:\\Users\\sanjj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sanjj\\DatingApp\\api\\obj\\",
+      "outputPath": "C:\\Users\\sanjj\\DatingApp\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sanjj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\sanjj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

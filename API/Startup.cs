@@ -13,24 +13,25 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
-//using API.Services;
+using API.Services;
+using API.Interfaces;
 
 namespace API
 {
     public class Startup
     {
-        
-    private readonly IConfiguration _config;
 
-    public Startup(IConfiguration config)
-    {
-        _config = config;
-    }
-      
+        private readonly IConfiguration _config;
+
+        public Startup(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            //IServiceCollection serviceCollection = services.AddScoped<TokenService, TokenService>();
-            
+            IServiceCollection serviceCollection = services.AddScoped<ITokenService, TokenService>();
+
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
@@ -39,13 +40,13 @@ namespace API
             services.AddControllers();
             services.AddCors();
         }
-           
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+
             }
 
             app.UseHttpsRedirection();
@@ -63,6 +64,6 @@ namespace API
         }
     }
 }
-    
+
 
 
