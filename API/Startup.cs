@@ -34,21 +34,11 @@ namespace API
 
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true, 
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                };
-            });
+            
 
         }
         
