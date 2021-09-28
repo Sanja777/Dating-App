@@ -18,6 +18,7 @@ using API.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using API.Extensions;
 
 namespace API
 {
@@ -33,13 +34,8 @@ namespace API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            IServiceCollection serviceCollection = services.AddScoped<ITokenService, TokenService>();
-
-            services.AddDbContext<DataContext>(options =>
-            {
-                options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
-            });
-
+           
+            services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
