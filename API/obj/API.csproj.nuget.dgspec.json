@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\sanjj\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\sanjj\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\sanjj\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\sanjj\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\sanjj\\DatingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\sanjj\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\sanjj\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\sanjj\\DatingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sanjj\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,6 +21,7 @@
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
