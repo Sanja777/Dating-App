@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using API.Extensions;
+using API.Middleware;
 
 namespace API
 {
@@ -15,11 +16,7 @@ namespace API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-
-            }
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
@@ -38,6 +35,8 @@ namespace API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+    
 
             services.AddApplicationServices(_config);
             services.AddControllers();

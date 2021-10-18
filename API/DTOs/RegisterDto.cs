@@ -8,9 +8,9 @@ namespace API.dtoS
 
         public string Username { get; set; } 
 
+[Required]
+[StringLength(8, MinimumLength =4)]
 
-
-[System.ComponentModel.DataAnnotations.Required]
       public string Password { get; set; } 
 
     }
