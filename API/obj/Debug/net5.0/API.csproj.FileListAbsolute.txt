@@ -80,3 +80,4 @@ C:\Users\sanjj\DatingApp\api\bin\Debug\net5.0\runtimes\linux-mips64\native\libe_
 C:\Users\sanjj\DatingApp\api\bin\Debug\net5.0\runtimes\win-arm\native\e_sqlite3.dll
 C:\Users\sanjj\DatingApp\api\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\sanjj\DatingApp\api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sanjj\DatingApp\api\bin\Debug\net5.0\Data\UserSeedData.json
