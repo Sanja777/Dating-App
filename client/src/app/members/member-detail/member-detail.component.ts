@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-//import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
 import { Member } from 'src/app/_models/member';
 import { MembersService } from 'src/app/_services/members.service';
 
@@ -10,7 +9,7 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  member: Member;
+  public member: Member;
   /*galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];*/
 
@@ -18,6 +17,7 @@ export class MemberDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.loadMember();
 
     /*this.galleryOptions = [
