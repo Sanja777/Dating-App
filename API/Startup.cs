@@ -42,6 +42,7 @@ namespace API
             services.AddControllers();
             services.AddCors();
             services.AddIdentityServices(_config);
+            services.AddHttpContextAccessor();
 
 
 

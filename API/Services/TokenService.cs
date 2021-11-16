@@ -15,7 +15,6 @@ namespace API.Services
     {
 
         private readonly SymmetricSecurityKey _key;
-        private IEnumerable<Claim> claims;
 
         public TokenService(IConfiguration config)
         {
@@ -24,7 +23,7 @@ namespace API.Services
         }
         public string CreateToken(AppUser user)
         {
-            var vlaims = new List<Claim>
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
             };
