@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
 using API.DTOs;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -80,7 +81,8 @@ namespace API.Controllers
 
             {
                 Username = user.UserName, 
-                Token= _tokenService.CreateToken(user)
+                Token= _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
             };
         }
         private async Task<bool> UserExists(string Username)

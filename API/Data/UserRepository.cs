@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -12,12 +14,13 @@ namespace API.Data
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
-
+        private readonly IMapper _mapper;
         public Task<MemberDto> GetMe { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-        public UserRepository(DataContext context)
+        public UserRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
          public async Task<IEnumerable<AppUser>> GetUsersAsync()
@@ -55,12 +58,18 @@ namespace API.Data
         {
             return await _context.Users
             .Where(x=>x.UserName==username)
-            .Select(user => new MemberDto
+            .Include(p => p.Photos)
+            .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+            /*.Select(user => new MemberDto
             {
                 Id=user.Id,
-                UserName = user.UserName
+                //PhotoUrl = (_mapper.Map<ICollection<PhotoDto>>(user.Photos).FirstOrDefault()).Url,
+                Interests = user.Interests,
+                UserName = user.UserName,
+                City = user.City,
+                Photos = _mapper.Map<ICollection<PhotoDto>>(user.Photos)
 
-            }).SingleOrDefaultAsync();
+            })*/.SingleOrDefaultAsync();
         }
 
         public Task<MemberDto> GetMemberAsync()
