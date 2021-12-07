@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -23,11 +24,16 @@ namespace API.Data
             _mapper = mapper;
         }
 
-         public async Task<IEnumerable<AppUser>> GetUsersAsync()
+         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            return await _context.Users
-           .Include(p => p.Photos)
-           .ToListAsync();
+           var query = _context.Users
+            .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+            .AsNoTracking();
+            return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
+
+           
+           
+         
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)
@@ -54,22 +60,16 @@ namespace API.Data
             _context.Entry(user).State = EntityState.Modified;
         }
 
-        public async Task<MemberDto> GetMemberAsync(string username)
+        public async Task<IEnumerable<MemberDto>>
+        
+         GetMemberAsync (string username)
         {
             return await _context.Users
-            .Where(x=>x.UserName==username)
-            .Include(p => p.Photos)
+            
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-            /*.Select(user => new MemberDto
-            {
-                Id=user.Id,
-                //PhotoUrl = (_mapper.Map<ICollection<PhotoDto>>(user.Photos).FirstOrDefault()).Url,
-                Interests = user.Interests,
-                UserName = user.UserName,
-                City = user.City,
-                Photos = _mapper.Map<ICollection<PhotoDto>>(user.Photos)
+            .ToListAsync();
 
-            })*/.SingleOrDefaultAsync();
+           
         }
 
         public Task<MemberDto> GetMemberAsync()
@@ -78,6 +78,16 @@ namespace API.Data
         }
 
         public Task<IEnumerable<MemberDto>> GetMembersAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Task<MemberDto> IUserRepository.GetMemberAsync(string username)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<AppUser>> GetUsersAsync()
         {
             throw new System.NotImplementedException();
         }
