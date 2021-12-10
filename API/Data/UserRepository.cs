@@ -60,14 +60,11 @@ namespace API.Data
             _context.Entry(user).State = EntityState.Modified;
         }
 
-        public async Task<IEnumerable<MemberDto>>
-        
-         GetMemberAsync (string username)
+        public async Task<MemberDto> GetMemberAsync (string username)
         {
             return await _context.Users
-            
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-            .ToListAsync();
+            .FirstOrDefaultAsync();
 
            
         }
@@ -82,10 +79,10 @@ namespace API.Data
             throw new System.NotImplementedException();
         }
 
-        Task<MemberDto> IUserRepository.GetMemberAsync(string username)
+        /*Task<MemberDto> IUserRepository.GetMemberAsync(string username)
         {
             throw new System.NotImplementedException();
-        }
+        }*/
 
         public Task<IEnumerable<AppUser>> GetUsersAsync()
         {
